@@ -7,6 +7,9 @@ categories: techology devops
 ---
 
 
+
+[如何解决相对路径图片的问题](https://ricostacruz.com/til/relative-paths-in-jekyll)
+
 # Docker Network
 
 ## 0. Overview
