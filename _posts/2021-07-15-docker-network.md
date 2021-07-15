@@ -52,7 +52,7 @@ sudo docker exec -it test1 /bin/sh
 ip a
 ```
 
-<img src="../graph/n01.png" width="350px">
+<img src="https://github.com/ZhigaoW/ZhigaoW.github.io/tree/gh-pages/graph/n01.png" width="350px">
 
 
 3. 退出查看主机中的网络接口
