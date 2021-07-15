@@ -52,7 +52,7 @@ sudo docker exec -it test1 /bin/sh
 ip a
 ```
 
-<img src="./graph/n01.png" width="350px">
+<img src="../graph/n01.png" width="350px">
 
 
 3. 退出查看主机中的网络接口
@@ -62,7 +62,7 @@ exit
 ip a 
 ```
 
-<img src="./graph/n02.png" width="550px">
+<img src="../graph/n02.png" width="550px">
 
 4. 再创建一个docker容器
 
@@ -75,12 +75,12 @@ sudo docker exec test2 ip a
 
 
 
-<img src="./graph/n03.png" width="350px">
+<img src="../graph/n03.png" width="350px">
 
 - 对比一下
 
 
-<img src="./graph/n01.png" width="350px">
+<img src="../graph/n01.png" width="350px">
 
 5. 进入test1里面，可以ping通test2
 
@@ -89,7 +89,7 @@ sudo docker exec -it test1 /bin/sh
 ping 172.18.0.3
 ```
 
-<img src="./graph/n04.png" width="550px">
+<img src="../graph/n04.png" width="550px">
 
 
 ##### 总结
@@ -117,7 +117,7 @@ sudo ip netns add test2
 sudo ip netns exec test1 ip a
 ```
 
-<img src="./graph/n05.png" width="350px">
+<img src="../graph/n05.png" width="350px">
 
 - 有一个回环口
 - 状态是DOWN
@@ -129,7 +129,7 @@ sudo ip netns exec test1 ip link set dev lo up
 sudo ip netns exec test1 ip link
 ```
 
-<img src="./graph/n06.png" width="650px">
+<img src="../graph/n06.png" width="650px">
 
 - 状态是unknown
     - 因为单个端口无法up起来
@@ -143,7 +143,7 @@ sudo ip netns exec test1 ip link
 sudo ip link add veth-test1 type veth peer name veth-test2
 ```
 
-<img src="./graph/n07.png" width="650px">
+<img src="../graph/n07.png" width="650px">
 
 5. 将veth-test1放入test1
 
@@ -154,7 +154,7 @@ ip netns exec test1 ip link
 ```
 
 
-<img src="./graph/n08.png" width="650px">
+<img src="../graph/n08.png" width="650px">
 
 - 注意主机和test1中ip link的变化
 
@@ -168,7 +168,7 @@ sudo ip netns exec test1 ip addr add 192.168.1.1/24 dev veth-test1
 sudo ip netns exec test2 ip addr add 192.168.1.2/24 dev veth-test2
 ```
 
-<img src="./graph/n09.png" width="650px">
+<img src="../graph/n09.png" width="650px">
 
 - 仍然没有ip地址
     - 没有启动起来
@@ -181,9 +181,9 @@ sudo ip netns exec test2 ip link set dev veth-test2 up
 ```
 
 
-<img src="./graph/n10.png" width="650px">
+<img src="../graph/n10.png" width="650px">
 
-<img src="./graph/n11.png" width="650px">
+<img src="../graph/n11.png" width="650px">
 
 
 9. 已经将两个network namespace连接起来
@@ -193,7 +193,7 @@ sudo ip netns exec test1 ping 192.168.1.2
 sudo ip netns exec test2 ping 192.168.1.1
 ```
 
-<img src="./graph/n12.png" width="450px">
+<img src="../graph/n12.png" width="450px">
 
 
 ##### 总结
@@ -201,7 +201,7 @@ sudo ip netns exec test2 ping 192.168.1.1
 - 该实验的原理和两个docker的network namespace能够ping通的原理一样
 - 实验原理图
 
-<img src="./graph/n00.png" width="450px">
+<img src="../graph/n00.png" width="450px">
 
 - eth0: Ethernet interface 以太网接口
 - lo  : loopback
@@ -220,7 +220,7 @@ docker kill test2
 sudo docker network ls
 ```
 
-<img src="./graph/n13.png" width="250px">
+<img src="../graph/n13.png" width="250px">
 
 
 2. 主机网络、docker test1网络
@@ -231,7 +231,7 @@ docker exec test1 ip a
 ```
 
 
-<img src="./graph/n14.png" width="650px">
+<img src="../graph/n14.png" width="650px">
 
 - test1的网络是通过一个veth-pair连接到主机的docker0网络上的
 
@@ -251,7 +251,7 @@ sudo apt-get install bridge-utils
 brctl show
 ```
 
-<img src="./graph/n15.png" width="350px">
+<img src="../graph/n15.png" width="350px">
 
 3.3 再创建一个docker容器
 
@@ -263,12 +263,12 @@ sudo docker run -d --name test2 busybox /bin/bash -c "while true; do sleep 3600;
 3.4 查看一下结果
 
 
-<img src="./graph/n16.png" width="650px">
-<img src="./graph/n17.png" width="350px">
+<img src="../graph/n16.png" width="650px">
+<img src="../graph/n17.png" width="350px">
 
 4. 说明我们创建的两个docker容器的网络拓扑如下
 
-<img src="./graph/n18.png" width="650px">
+<img src="../graph/n18.png" width="650px">
 
 
 ### 一些简单的结果
@@ -283,7 +283,7 @@ ping test1
 ```
 
 
-<img src="./graph/n19.png" width="650px">
+<img src="../graph/n19.png" width="650px">
 
 
 2. docker 容器使用自己的 bridge
@@ -319,7 +319,7 @@ sudo docker run --name web -d nginx
 sudo docker network inspect bridge
 ```
 
-<img src="./graph/n20.png" width="450px">
+<img src="../graph/n20.png" width="450px">
 
 - 尝试在宿主机里访问nginx服务
 
@@ -328,7 +328,7 @@ telnet 172.18.0.2 80
 curl 172.18.0.2
 ```
 
-<img src="./graph/n21.png" width="450px">
+<img src="../graph/n21.png" width="450px">
 
 
 - 将容器端口与宿主机端口映射
@@ -341,7 +341,7 @@ sudo docker rm web
 sudo docker run --name web -d -p 80:80 nginx
 ```
 
-<img src="./graph/n22.png" width="450px">
+<img src="../graph/n22.png" width="450px">
 
 
 ##### 总结
@@ -349,13 +349,13 @@ sudo docker run --name web -d -p 80:80 nginx
 - 大概可以有下面两种模型
 
 
-<img src="./graph/n23.png" width="450px">
-<img src="./graph/n24.png" width="450px">
+<img src="../graph/n23.png" width="450px">
+<img src="../graph/n24.png" width="450px">
 
 - 通过外网可以访问
 
 
-<img src="./graph/n25.png" width="450px">
+<img src="../graph/n25.png" width="450px">
 
 ## 2. NoneNetwork
 
@@ -364,13 +364,13 @@ sudo docker run -d --name test1 --network none  busybox /bin/sh -c "while true; 
 docker network inspect none
 ```
 
-<img src="./graph/n26.png" width="450px">
+<img src="../graph/n26.png" width="450px">
 
 ```
 docker exec -it test1  /bin/sh
 ```
 
-<img src="./graph/n27.png" width="450px">
+<img src="../graph/n27.png" width="450px">
 
 
 ##### 总结
