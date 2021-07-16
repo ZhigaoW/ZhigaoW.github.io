@@ -80,12 +80,12 @@ sudo docker exec test2 ip a
 
 
 
-![n03]({{site.url}}/graph/n03.png )
+![n03]({{site.url}}/graph/n03.png)
 
 - 对比一下
 
 
-![]({{site.url}}/graph/n01.png )
+![]({{site.url}}/graph/n01.png)
 
 5. 进入test1里面，可以ping通test2
 
@@ -94,7 +94,7 @@ sudo docker exec -it test1 /bin/sh
 ping 172.18.0.3
 ```
 
-![]({{site.url}}/graph/n04.png )
+![]({{site.url}}/graph/n04.png)
 
 
 ##### 总结
@@ -122,7 +122,7 @@ sudo ip netns add test2
 sudo ip netns exec test1 ip a
 ```
 
-![]({{site.url}}/graph/n05.png )
+![]({{site.url}}/graph/n05.png)
 
 - 有一个回环口
 - 状态是DOWN
@@ -134,7 +134,7 @@ sudo ip netns exec test1 ip link set dev lo up
 sudo ip netns exec test1 ip link
 ```
 
-![]({{site.url}}/graph/n06.png )
+![]({{site.url}}/graph/n06.png)
 
 - 状态是unknown
     - 因为单个端口无法up起来
@@ -148,7 +148,7 @@ sudo ip netns exec test1 ip link
 sudo ip link add veth-test1 type veth peer name veth-test2
 ```
 
-![]({{site.url}}/graph/n07.png )
+![]({{site.url}}/graph/n07.png)
 
 5. 将veth-test1放入test1
 
