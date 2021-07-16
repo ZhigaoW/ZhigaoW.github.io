@@ -55,7 +55,7 @@ sudo docker exec -it test1 /bin/sh
 ip a
 ```
 
-<img src="https://github.com/ZhigaoW/ZhigaoW.github.io/tree/gh-pages/graph/n01.png" )
+<img src="https://github.com/ZhigaoW/ZhigaoW.github.io/tree/gh-pages/graph/n01.png )
 
 
 3. 退出查看主机中的网络接口
@@ -80,12 +80,12 @@ sudo docker exec test2 ip a
 
 
 
-![n03]({{site.url}}/graph/n03.png" )
+![n03]({{site.url}}/graph/n03.png )
 
 - 对比一下
 
 
-![]({{site.url}}/graph/n01.png" )
+![]({{site.url}}/graph/n01.png )
 
 5. 进入test1里面，可以ping通test2
 
@@ -94,7 +94,7 @@ sudo docker exec -it test1 /bin/sh
 ping 172.18.0.3
 ```
 
-![]({{site.url}}/graph/n04.png" )
+![]({{site.url}}/graph/n04.png )
 
 
 ##### 总结
@@ -122,7 +122,7 @@ sudo ip netns add test2
 sudo ip netns exec test1 ip a
 ```
 
-![]({{site.url}}/graph/n05.png" )
+![]({{site.url}}/graph/n05.png )
 
 - 有一个回环口
 - 状态是DOWN
@@ -134,7 +134,7 @@ sudo ip netns exec test1 ip link set dev lo up
 sudo ip netns exec test1 ip link
 ```
 
-![]({{site.url}}/graph/n06.png" )
+![]({{site.url}}/graph/n06.png )
 
 - 状态是unknown
     - 因为单个端口无法up起来
@@ -148,7 +148,7 @@ sudo ip netns exec test1 ip link
 sudo ip link add veth-test1 type veth peer name veth-test2
 ```
 
-![]({{site.url}}/graph/n07.png" )
+![]({{site.url}}/graph/n07.png )
 
 5. 将veth-test1放入test1
 
@@ -159,7 +159,7 @@ ip netns exec test1 ip link
 ```
 
 
-![]({{site.url}}/graph/n08.png" )
+![]({{site.url}}/graph/n08.png )
 
 - 注意主机和test1中ip link的变化
 
@@ -173,7 +173,7 @@ sudo ip netns exec test1 ip addr add 192.168.1.1/24 dev veth-test1
 sudo ip netns exec test2 ip addr add 192.168.1.2/24 dev veth-test2
 ```
 
-![]({{site.url}}/graph/n09.png" )
+![]({{site.url}}/graph/n09.png )
 
 - 仍然没有ip地址
     - 没有启动起来
@@ -186,9 +186,9 @@ sudo ip netns exec test2 ip link set dev veth-test2 up
 ```
 
 
-![]({{site.url}}/graph/n10.png" )
+![]({{site.url}}/graph/n10.png )
 
-![]({{site.url}}/graph/n11.png" )
+![]({{site.url}}/graph/n11.png )
 
 
 9. 已经将两个network namespace连接起来
@@ -198,7 +198,7 @@ sudo ip netns exec test1 ping 192.168.1.2
 sudo ip netns exec test2 ping 192.168.1.1
 ```
 
-![]({{site.url}}/graph/n12.png" )
+![]({{site.url}}/graph/n12.png )
 
 
 ##### 总结
@@ -206,7 +206,7 @@ sudo ip netns exec test2 ping 192.168.1.1
 - 该实验的原理和两个docker的network namespace能够ping通的原理一样
 - 实验原理图
 
-![]({{site.url}}/graph/n00.png" )
+![]({{site.url}}/graph/n00.png )
 
 - eth0: Ethernet interface 以太网接口
 - lo  : loopback
@@ -225,7 +225,7 @@ docker kill test2
 sudo docker network ls
 ```
 
-![]({{site.url}}/graph/n13.png" )
+![]({{site.url}}/graph/n13.png )
 
 
 2. 主机网络、docker test1网络
@@ -236,7 +236,7 @@ docker exec test1 ip a
 ```
 
 
-![]({{site.url}}/graph/n14.png" )
+![]({{site.url}}/graph/n14.png )
 
 - test1的网络是通过一个veth-pair连接到主机的docker0网络上的
 
@@ -256,7 +256,7 @@ sudo apt-get install bridge-utils
 brctl show
 ```
 
-![]({{site.url}}/graph/n15.png" )
+![]({{site.url}}/graph/n15.png )
 
 3.3 再创建一个docker容器
 
@@ -268,12 +268,12 @@ sudo docker run -d --name test2 busybox /bin/bash -c "while true; do sleep 3600;
 3.4 查看一下结果
 
 
-![]({{site.url}}/graph/n16.png" )
-![]({{site.url}}/graph/n17.png" )
+![]({{site.url}}/graph/n16.png )
+![]({{site.url}}/graph/n17.png )
 
 4. 说明我们创建的两个docker容器的网络拓扑如下
 
-![]({{site.url}}/graph/n18.png" )
+![]({{site.url}}/graph/n18.png )
 
 
 ### 一些简单的结果
@@ -288,7 +288,7 @@ ping test1
 ```
 
 
-![]({{site.url}}/graph/n19.png" )
+![]({{site.url}}/graph/n19.png )
 
 
 2. docker 容器使用自己的 bridge
@@ -324,7 +324,7 @@ sudo docker run --name web -d nginx
 sudo docker network inspect bridge
 ```
 
-![]({{site.url}}/graph/n20.png" )
+![]({{site.url}}/graph/n20.png )
 
 - 尝试在宿主机里访问nginx服务
 
@@ -333,7 +333,7 @@ telnet 172.18.0.2 80
 curl 172.18.0.2
 ```
 
-![]({{site.url}}/graph/n21.png" )
+![]({{site.url}}/graph/n21.png )
 
 
 - 将容器端口与宿主机端口映射
@@ -346,7 +346,7 @@ sudo docker rm web
 sudo docker run --name web -d -p 80:80 nginx
 ```
 
-![]({{site.url}}/graph/n22.png" )
+![]({{site.url}}/graph/n22.png )
 
 
 ##### 总结
@@ -354,13 +354,13 @@ sudo docker run --name web -d -p 80:80 nginx
 - 大概可以有下面两种模型
 
 
-![]({{site.url}}/graph/n23.png" )
-![]({{site.url}}/graph/n24.png" )
+![]({{site.url}}/graph/n23.png )
+![]({{site.url}}/graph/n24.png )
 
 - 通过外网可以访问
 
 
-![]({{site.url}}/graph/n25.png" )
+![]({{site.url}}/graph/n25.png )
 
 ## 2. NoneNetwork
 
@@ -369,13 +369,13 @@ sudo docker run -d --name test1 --network none  busybox /bin/sh -c "while true; 
 docker network inspect none
 ```
 
-![]({{site.url}}/graph/n26.png" )
+![]({{site.url}}/graph/n26.png )
 
 ```
 docker exec -it test1  /bin/sh
 ```
 
-![]({{site.url}}/graph/n27.png" )
+![]({{site.url}}/graph/n27.png )
 
 
 ##### 总结
