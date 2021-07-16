@@ -65,7 +65,9 @@ exit
 ip a 
 ```
 
-<img src="../graph/n02.png" width="550px">
+
+![n02]({{site.url}}/graph/n02.png)
+
 
 4. 再创建一个docker容器
 
