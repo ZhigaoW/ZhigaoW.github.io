@@ -80,7 +80,7 @@ sudo docker exec test2 ip a
 
 
 
-![]({{site.url}}/graph/n03.png" )
+![n03]({{site.url}}/graph/n03.png" )
 
 - 对比一下
 
