@@ -142,7 +142,7 @@ A212 --> A2121
 
 ### GUID-Partion-Table-Scheme 
 
-<img src="./graph/1920px-GUID_Partition_Table_Scheme.svg.png" width="350px">
+![]({{site.url}}/graph/1920px-GUID_Partition_Table_Scheme.svg.png)
 
 
 - GPT 使用了34个LBA来记录分区信息
@@ -179,8 +179,7 @@ A212 --> A2121
 
 1. 分析硬件，到第一个扇区去读取MBR
 
-
-<img src="./graph/boot_loader.png" width="350px">
+![]({{site.url}}/graph/boot_loader.png)
 
 2. 执行启动引导程序（boot loader），例如grub
     - 提供启动选项
@@ -246,9 +245,9 @@ UEFI + GPT
     - /etc/shadow
     - /etc/group
 
-<img src="./graph/file_power.png" width="350px">
+![]({{site.url}}/graph/file_power.png)
 
-<img src="./graph/file_power_1.png" width="350px">
+![]({{site.url}}/graph/file_power_1.png)
 
 - 文件大小为Bytes
 
@@ -317,5 +316,5 @@ chmod a-x .bashrc
 - 一张Filesystem Hierarchy Standard的图片
 
 
-<img src="./graph/empty.png" width="350px">
+![]({{site.url}}/graph/empty.png)
 
